@@ -34,4 +34,6 @@ def get_bot_response():
     else:
         return str(response)
 
+app.run()
+
 
