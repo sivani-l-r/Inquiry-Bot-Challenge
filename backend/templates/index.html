@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    body {
+        font-family: Garamond;
+        background-color: #FFF5E0;
+    }
+
+    body.dark-theme {
+        background-color: #2B2730;
+        font-family: Garamond;
+    }
+
+    h1 {
+    color: #071952;
+    margin: 20px 0;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    font-size: 36px;
+    }
+
+
+    h1.dark-theme {
+    color: #8BE8E5;
+    margin: 20px 0;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    font-size: 36px;
+}
+
+p {
+    color: #009688; /* Accent color */
+    font-size: 18px; /* Adjust font size for readability */
+    margin: 10px 0; /* Adjust margin for spacing */
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font stack */
+}
+
+    #chatbox {
+        margin-left: auto;
+        margin-right: auto;
+        width: 40%;
+        margin-top: 60px;
+        color: #002B5B;
+    }
+
+    #userInput {
+        margin-left: auto;
+        margin-right: auto;
+        width: 40%;
+        margin-top: 60px;
+    }
+
+    #textInput {
+        width: 87%;
+        border: none;
+        border-bottom: 3px solid #009688;
+        font-family: monospace;
+        font-size: 17px;
+    }
+
+    #buttonInput {
+        padding: 3px;
+        font-family: monospace;
+        font-size: 17px;
+        color: #EA5455;
+    }
+
+    .userText {
+        color: white;
+        font-family: monospace;
+        font-size: 17px;
+        text-align: right;
+        line-height: 30px;
+    }
+
+    .userText span {
+        background-color: #009688;
+        padding: 10px;
+        border-radius: 2px;
+    }
+
+    .botText {
+        color: white;
+        font-family: monospace;
+        font-size: 17px;
+        text-align: left;
+        line-height: 30px;
+    }
+
+    .botText span {
+        background-color: #EF5350;
+        padding: 10px;
+        border-radius: 2px;
+    }
+
+    #tidbit {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 300px;
+    }
+
+    .toggle input[type='checkbox'] {
+        display: none;
+    }
+
+    .toggle label {
+    background-color: #FEFFAC; /* BG SHAPE COLOR  BEFORE */
+    border: 2px solid #FBF0B2;
+    border-radius: 50px;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: all ease-in-out 0.3s;
+    width: 60px; /* Reduce the width to make it smaller */
+    height: 30px; /* Reduce the height to make it smaller */
+}
+
+    .toggle label::after {
+        background-color: #FFB000; /* CIRCLE SHAPE COLOR  BEFORE */
+        border: 2px solid #F3FDE8;
+        border-radius: 50%;
+        content: ' ';
+        cursor: pointer;
+        display: inline-block;
+        position: absolute;
+        left: 2px; /* Adjust the left position to keep it centered horizontally */
+        top: 2px; /* Adjust the top position to keep it centered vertically */
+        transform: translateY(-70%);
+        transform: translateX(-2%);
+        transition: all ease-in-out 0.3s;
+        width: 26px; /* Adjust the size of the inner circle */
+        height: 26px; /* Adjust the size of the inner circle */
+    }
+
+
+    .toggle input[type='checkbox']:checked ~ label {
+        background-color: #000; /* BG SHAPE COLOR AFTER */
+        border-color: #3F2E3E;
+    }
+
+    .toggle input[type='checkbox']:checked ~ label::after {
+        background-color: #016A70; /* CIRCLE SHAPE COLOR  AFTER */
+        border: 2px solid #053B50;
+        transform: translateX(30px);
+    }
+
+    .boxed {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%; /* Adjust the width to your preference */
+    margin-top: 20px; /* Reduce the top margin for a more compact look */
+    padding: 5px; /* Add padding to create space around the chatbox */
+    background-color: #f4f4f4; /* Set a background color for the chatbox */
+    border-radius: 10px; /* Round the corners for a modern look */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+
+.boxed.dark-theme {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%; /* Adjust the width to your preference */
+    margin-top: 20px; /* Reduce the top margin for a more compact look */
+    padding: 20px; /* Add padding to create space around the chatbox */
+    background-color: #0B666A; /* Set a background color for the chatbox */
+    border-radius: 10px; /* Round the corners for a modern look */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+
+.box {
+    border: none; /* Remove the border for a cleaner look */
+}
+
+</style>
+</head>
+<body class="light-theme">
+<div>
+<h1>Welcome to AICSSYCAssist! </h1>
+<div class="chatbot-info">
+    <p>Your Friendly Chatbot for All Things <a href="https://aicssyc.org/" target="_blank">AICSSYC</a></p>
+    <p class="sample-prompts">Sample Prompts: 1. Tell me about AICSSYC.
+        2. What is the purpose of AICSSYC?
+        3. What is the significance of AICSSYC?</p>
+
+
+</div>
+
+</div>
+<div class="toggle">
+    <input type="checkbox" id="toggle" />
+    <label for="toggle"></label>
+</div>
+<div class = "box"> </div>
+<div class ="boxed">
+<div>
+    <div id="chatbox">
+        <p class="botText"><span>Hi! I'm AICSSYCAssist, a ChatBot!</span></p>
+    </div>
+
+    <div id="userInput">
+        <input id="textInput" type="text" name="msg" placeholder="Enter query here...">
+        <input id="buttonInput" type="submit" value="Send">
+    </div>
+    <script>
+        const toggle = document.getElementById('toggle');
+        const body = document.body;
+        const boxed = document.querySelector('.boxed');
+        const h1 = document.querySelector('h1');
+        toggle.addEventListener('input', e => {
+            const isChecked = e.target.checked;
+
+
+            if (isChecked) {
+                body.classList.add('dark-theme');
+                boxed.classList.add('dark-theme');
+                h1.classList.add('dark-theme');
+
+            } else {
+                body.classList.remove('dark-theme');
+                boxed.classList.remove('dark-theme');
+                h1.classList.remove('dark-theme');
+            }
+        });
+
+        function getBotResponse() {
+            var rawText = document.getElementById("textInput").value;
+            var userHtml = '<p class="userText"><span>' + rawText + '</span></p>';
+            document.getElementById("textInput").value = "";
+            document.getElementById('chatbox').insertAdjacentHTML('beforeend', userHtml);
+            document.getElementById('userInput').scrollIntoView({block: 'start', behavior: 'smooth'});
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "/get?msg=" + encodeURIComponent(rawText), true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var data = xhr.responseText;
+                    var botHtml = '<p class="botText"><span>' + data + '</span></p>';
+                    document.getElementById('chatbox').insertAdjacentHTML('beforeend', botHtml);
+                    document.getElementById('userInput').scrollIntoView({block: 'start', behavior: 'smooth'});
+                }
+            };
+            xhr.send();
+        }
+
+        document.getElementById("textInput").addEventListener("keypress", function(e) {
+            if (e.which === 13 && document.getElementById("textInput").value !== "") {
+                getBotResponse();
+            }
+        });
+
+        document.getElementById("buttonInput").addEventListener("click", function() {
+            if (document.getElementById("textInput").value !== "") {
+                getBotResponse();
+            }
+        });
+    </script>
+    </div>
+
+</div>
+<p>Developed by <a href="https://sivani-l-r.carrd.co/" target="_blank">Sivani</a></p>
+</body>
+</html>

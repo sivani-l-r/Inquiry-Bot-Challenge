@@ -1,0 +1,11 @@
+pip~=23.2.1
+attrs~=23.1.0
+wheel~=0.41.2
+Pillow~=10.0.0
+Jinja2~=3.1.2
+setuptools~=68.2.2
+packaging~=23.1
+zipp~=3.16.2
+Cython~=3.0.2
+Flask~=2.2.2
+ChatterBot~=1.0.0
